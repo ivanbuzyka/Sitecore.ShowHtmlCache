@@ -1,13 +1,17 @@
 ﻿using System.Collections.Generic;
-using System.Web.Mvc;
+using System.Web.Http;
 
 namespace DiscoverHtmlCache.Controllers
 {
-  public class HtmlCacheController : Controller
+  [RoutePrefix("api/mysuperapi/HtmlCache")]
+  public class HtmlCacheController : ApiController
   {
     // GET: HtmlCache
     [HttpGet]
-    public ActionResult Index(string sitename = "website")
+    //this is just an example of the routing customization
+    // the route to call this method will be <hostname>/api/mysuperapi/HtmlCache/supermethod
+    [Route("supermethod")] 
+    public IHttpActionResult Index([FromUri] string sitename = "website")
     {
       // default value            
 
@@ -16,7 +20,7 @@ namespace DiscoverHtmlCache.Controllers
 
       if (siteContext == null)
       {
-        return Json(new { result = string.Format("The site '{0}' does not exist", sitename) }, JsonRequestBehavior.AllowGet);
+        return Json(new { result = string.Format("The site '{0}' does not exist", sitename) });
       }
 
       Sitecore.Caching.HtmlCache htmlCache = Sitecore.Caching.CacheManager.GetHtmlCache(siteContext);
@@ -27,7 +31,7 @@ namespace DiscoverHtmlCache.Controllers
         cacheContents.Add(sKey, htmlCache.GetHtml(sKey));
       }
 
-      return Json(new { result = cacheContents }, JsonRequestBehavior.AllowGet);
+      return Json(new { result = cacheContents });
     }
   }
 }
