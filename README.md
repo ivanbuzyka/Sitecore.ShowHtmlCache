@@ -6,8 +6,9 @@ The tool shows HTML cache (component cache) contents for a specific site
 1. Build solution (make sure Sitecore DLLs from the right Sitecore version are referenced, Sitecore Nuget is used here)
 2. Copy DLL to the ```bin``` folder of your CD instance
 3. Request website on the CD instance, surf through the pages where you have cached components (in order to fill up HTML cache)
-4. Call the controller action: ```https://your-cd-host-name/api/sitecore/HtmlCache/Index?sitename=your-website-name```.
+4. Call the controller action: ```https://your-cd-host-name/api/mysuperapi/HtmlCache/supermethod?sitename=your-website-name```.
 
+**Note:** pay attention to the customized routing path when calling controller action. You can change it to the one you need/like
 **Note:** add the name of your Sitecore Website which component cache you would like to see
 
 Example of the returned value:
