@@ -9,6 +9,7 @@ The tool shows HTML cache (component cache) contents for a specific site
 4. Call the controller action: ```https://your-cd-host-name/api/mysuperapi/HtmlCache/supermethod?sitename=your-website-name```.
 
 **Note:** pay attention to the customized routing path when calling controller action. You can change it to the one you need/like
+
 **Note:** add the name of your Sitecore Website which component cache you would like to see
 
 Example of the returned value:
